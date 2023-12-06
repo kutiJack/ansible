@@ -3,16 +3,14 @@
   become: true
   
   vars:
-    mojedata: 
-       {%- jmeno:Jaroslav,prijmeni: Kuthan -%}
-      
+    mojedata:
+      jmeno: Jaroslav
+      prijmeni: Kuthan
 
 
 
 
   tasks:
-    - name: copy file
+    - name: Vypiš celý dict
       debug:
-        var: mojedata.jmeno
-       
-        
+            var: mojedata
