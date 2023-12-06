@@ -4,4 +4,4 @@
   tasks:
     - name: Vypiš celý dict
       debug:
-            msg: server_c ansible
+            msg: ansible na server_c
