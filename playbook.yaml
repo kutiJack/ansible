@@ -1,0 +1,18 @@
+---
+- hosts: servers
+  become: true
+  
+  vars:
+    mojedata: 
+       {%- jmeno:Jaroslav,prijmeni: Kuthan -%}
+      
+
+
+
+
+  tasks:
+    - name: copy file
+      debug:
+        var: mojedata.jmeno
+       
+        
