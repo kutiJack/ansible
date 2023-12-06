@@ -4,4 +4,4 @@
   tasks:
     - name: Vypiš celý dict
       debug:
-            msg: local yml playbook hotovo
+            msg: server_c ansible 
