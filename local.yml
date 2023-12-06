@@ -4,4 +4,4 @@
   tasks:
     - name: Vypiš celý dict
       debug:
-            msg: server_c ansible 
+            msg: hromadný pull na test_b a test_c
