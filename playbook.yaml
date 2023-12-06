@@ -13,4 +13,4 @@
   tasks:
     - name: Vypiš celý dict
       debug:
-            var: mojedata
+            msg: Pull hotovo
