@@ -1,7 +1,9 @@
 - hosts: all
   gather_facts: yes
-  user: root
+  become: yes
   tasks:
     - name: Vypiš celý dict
-      debug:
-            msg: hromadný pull na test_b a test_c
+      file:
+            path: /var/hromadnypull.txt
+            state: touch
+            mode: 777
