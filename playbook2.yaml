@@ -1,0 +1,10 @@
+---
+- hosts: servers
+  become: true
+  tasks:
+   - name: Přidat skupinu managers 
+    
+
+     at:
+       command: reboot
+       state: absent

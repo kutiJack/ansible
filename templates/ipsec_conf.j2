@@ -1,0 +1,63 @@
+{% for host in groups['servers'] %}
+
+{% if ansible_hostname !=hostvars[host].ansible_hostname %}
+
+
+config setup
+        charondebug="all"
+        uniqueids=yes
+        strictcrlpolicy=no
+
+conn paris-to-amsterdam
+	authby=secret
+	left=%defaultroute
+	leftid= {{ansible_default_ipv4.address}}
+
+	leftsubnet={{ansible_ens4.ipv4.network}}/16
+	right= {{hostvars[host].ansible_default_ipv4.address}}
+	rightsubnet= {{hostvars[host].ansible_ens4.ipv4.network}}/16
+
+	ike=aes256-sha2_256-modp1024!
+	esp=aes256-sha2_256!
+	keyingtries=0
+	ikelifetime=1h
+	lifetime=8h
+	dpddelay=30
+	dpdtimeout=120
+	dpdaction=restart
+	auto=start
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endif %}
+
+
+{% endfor %}

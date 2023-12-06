@@ -1,0 +1,94 @@
+---
+
+
+- hosts:    servers
+  become: true
+  
+ 
+  tasks:
+
+    - name: generate psk
+      ansible.builtin.shell:
+        openssl rand -base64 64 |  tr -d \\n
+      run_once: true
+      delegate_to: 127.0.0.1
+      register: psk 
+      
+
+
+
+    - name: setup sysctl ipv4.ip_forward
+      ansible.posix.sysctl:
+        name: net.ipv4.ip_forward
+        value: '1'
+        sysctl_set: true
+        state: present
+        reload: true
+
+
+    - name: setup sysctl net.ipv4.conf.all.accept_redirects
+      ansible.posix.sysctl:
+        name: net.ipv4.conf.all.accept_redirects
+        value: '0'
+        sysctl_set: true
+        state: present
+        reload: true
+
+    - name: setup sysctl net.ipv4.conf.all.send_redirects
+      ansible.posix.sysctl:
+        name: net.ipv4.conf.all.send_redirects
+        value: '0'
+        sysctl_set: true
+        state: present
+        reload: true
+
+
+
+
+    - name: Install Strongswan
+      apt:
+        name: strongswan
+        state: latest
+        update_cache: true
+ 
+    - name: Configure ipsec.conf
+      ansible.builtin.template: 
+        src: templates/ipsec_conf.j2
+        dest: /etc/ipsec.conf 
+     
+    - name: Configure ipsec.secrets
+      ansible.builtin.template: 
+        src: templates/ipsec_secrets.j2
+        dest: /etc/ipsec.secrets
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
