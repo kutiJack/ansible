@@ -13,4 +13,4 @@
   tasks:
     - name: Vypiš celý dict
       debug:
-            msg: Pull hotovo
+            msg: Regular playbook running...
