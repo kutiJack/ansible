@@ -1,6 +1,7 @@
 ---
-- hosts: servers
+- hosts: all
   become: true
+  
   
   vars:
     mojedata:
